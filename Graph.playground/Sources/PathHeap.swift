@@ -17,7 +17,7 @@ public class PathHeap {
     var parentIndex = 0
     
     if childIndex != 0 {
-      parentIndex = Int(floorf((childIndex - 1) / 2))
+      parentIndex = Int(floorf((childIndex - 1) / 2)) 
     }
     
     var childToUse: Path
