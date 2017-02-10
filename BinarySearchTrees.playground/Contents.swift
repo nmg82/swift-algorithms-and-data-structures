@@ -51,10 +51,35 @@ extension AVLTree {
   } //end function
 }
 
+extension AVLTree {
+  //depth-first traversal
+  func traverse() {
+    guard self.key != nil else {
+      print("no key provided..")
+      return
+    }
+    
+    //process the left side
+    if self.left != nil {
+      left?.traverse()
+    }
+    
+    print("...the value is: \(self.key!) - height: \(self.height)..")
+    
+    //process the right side
+    if self.right != nil {
+      right?.traverse()
+    }
+  }
+}
+
+
 //simple array of unsorted integers
 let numberList = [8, 2, 10, 9, 11, 1, 7]
 
 var root = AVLTree<Int>()
 numberList.forEach { root.append(element: $0) }
 
-dump(root)
+root.traverse()
+
+//dump(root)

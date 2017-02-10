@@ -86,3 +86,32 @@ public class SwiftGraph {
   }
 }
 
+extension SwiftGraph {
+  //breadth first search
+  func traverse(_ startingv: Vertex) {
+    let graphQueue = Queue<Vertex>()
+    
+    graphQueue.enQueue(startingv)
+    
+    while !graphQueue.isEmpty() {
+      //traverse the next queued vertex
+      let vitem = graphQueue.deQueue() as Vertex!
+      
+      guard vitem != nil else { return }
+      
+      //add unvisited vertices to the queue
+      for e in vitem!.neighbors {
+        if e.neighbor.visited == false {
+          print("adding vertex: \(e.neighbor.key!) to queue..")
+          graphQueue.enQueue(e.neighbor)
+        }
+      }
+      
+      vitem!.visited = true
+      print("traversed vertex: \(vitem!.key!)..")
+    } //end while
+    
+    print("graph traversal complete")
+  } //end function
+}
+
